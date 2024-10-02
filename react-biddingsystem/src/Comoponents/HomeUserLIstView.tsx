@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { getUserFromLocal } from "../Common/getUserFromLocal";
+import { ResultUsersPropsType } from "../Types/types";
 import { useBiddingContext } from "./ContextComponent";
-
-export const UsersView = () => {
+export const HomeUserLIstView = () => {
   const navigate = useNavigate();
-  const { userList } = useBiddingContext();
+  let result: ResultUsersPropsType = [];
+  result = getUserFromLocal();
+   const {userList} = useBiddingContext()
   return (
-    <div className="flex  flex-col w-[100%] h-[100%] items-center justify-center">
-      <span className="text-[50px] mb-[20px] text-center">
-        Choose an account
-      </span>
+    <div className="w-[300px] h-[300px] bg-white shadow-2xl flex flex-col justify-between rounded-lg absolute top-20 right-10 p-[10px] border-1 border-black">
       {userList.map((user) => (
         <div
           className="w-[90%] min-w-[210px] max-w-[600px] flex  border-b-[1px] border-[#b8b8b8]  items-center m-[10px] p-[10px]"
           key={user.user_id}
-          onClick={() => navigate("./UserHomePage", { state: user })}
+          onClick={() => navigate("/UserHomePage", { state: user })}
         >
           <img
             src={user.User_img}
