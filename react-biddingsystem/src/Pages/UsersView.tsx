@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useBiddingContext } from "../Comoponents/ContextComponent";
+import { useBiddingContext } from "./ContextComponent";
 import UserProfile from "../RealComponents/UserProfile";
 
 export const UsersView = () => {

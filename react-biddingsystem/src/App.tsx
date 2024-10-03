@@ -1,9 +1,9 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { UsersView } from "./Comoponents/UsersView";
-import { UserHomeUI } from "./Comoponents/UserHomeUI";
-import { UserBiddingUI } from "./Comoponents/UserBiddingUI";
-import { ContextComponent } from "./Comoponents/ContextComponent";
+import { UsersView } from "./Pages/UsersView";
+import { UserHomeUI } from "./Pages/UserHomeUI";
+import { UserBiddingUI } from "./Pages/UserBiddingUI";
+import { ContextComponent } from "./Pages/ContextComponent";
 function App() {
   return (
     <ContextComponent>

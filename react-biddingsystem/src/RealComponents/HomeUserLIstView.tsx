@@ -1,6 +1,6 @@
 import { getUserFromLocal } from "../Common/getUserFromLocal";
 import { ResultUsersPropsType } from "../Types/types";
-import { useBiddingContext } from "../Comoponents/ContextComponent";
+import { useBiddingContext } from "../Pages/ContextComponent";
 import UserProfile from "./UserProfile";
 export const HomeUserLIstView = () => {
   let result: ResultUsersPropsType = [];
