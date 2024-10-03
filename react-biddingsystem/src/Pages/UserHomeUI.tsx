@@ -11,14 +11,14 @@ export const UserHomeUI = () => {
   const [userMessageShow, setuserMessageShow] = useState(false);
   const location = useLocation();
   const value = location.state || {};
-
   const toggleUserListView = () => {
     setuserListShow((Prev) => !Prev);
   };
   const toggleUserMessages = () => {
     setuserMessageShow((perv) => !perv);
   };
-  const { productList, userList } = useBiddingContext();
+  const { productsList: productList, usersList: userList } =
+    useBiddingContext();
   return (
     <div className=" uerHomeUI flex flex-wrap w-[100%] items-center justify-center relative bg-[#eaedf5]">
       <div className="w-[100%] h-[84px]  flex justify-end px-[20px]  border-1 border-[#C3D4E966] userHomePagHeader">

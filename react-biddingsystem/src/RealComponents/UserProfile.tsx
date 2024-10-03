@@ -12,7 +12,9 @@ export default function UserProfile({ user }: UserProfileTypeProps) {
     setTimeout(() => {
       settoggleactiveclasss("");
     }, 100);
-    navigate("/UserHomePage", { state: user.user_id });
+    // <Link to={`UserHomePage/${user.user_id}`}></Link>
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    navigate("UserHomePage", { state: user.user_id });
   };
   return (
     <div

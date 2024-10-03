@@ -10,22 +10,20 @@ import { Users } from "../Data_store/Users";
 import BiddingContainer from "../RealComponents/BiddingContainer";
 import { addMessageToOtherUsrs } from "../Common/addMessagetoOthers";
 import { createKeyvalueForBiddinList } from "../Common/CreatKeyvalueForBiddinList";
+import Backbutton from "../RealComponents/Backbutton";
 
 export const UserBiddingUI = () => {
-  let InputValue: number = 0;
-  const { setThe_User_Products, productList } = useBiddingContext();
+  const { setUserProducts: setThe_User_Products, productsList: productList } =
+    useBiddingContext();
   const inputRef = useRef<HTMLInputElement>(null);
   const location = useLocation();
   const { value, currentUser } = location.state || {};
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    InputValue = +e.target.value;
-  };
   const allProducts: ResultProdutsPropsType =
     getProductsFromLocal() || bidding_Products;
 
   const allUsers: UserPropsType = getUserFromLocal() || Users;
 
-  const handleButttonclick = () => {
+  const handleButttonclick = (InputValue: number) => {
     ////// Managing User Bidding Price
     if (
       InputValue > 0 &&
@@ -34,7 +32,7 @@ export const UserBiddingUI = () => {
     ) {
       let indexValue = allProducts[value - 1].bidding_list.length; /////for id of live auction List
       allProducts[value - 1].current_bid_Amount = InputValue;
-      // let valueForKey = createKeyvalueForBiddinList(allProducts) //////////////////////////////last work
+      // let valueForKey = createKeyvalueForBiddinList(value,allProducts)
       allProducts[value - 1].bidding_list.push({
         id: indexValue++,
         name: currentUser.name,
@@ -53,9 +51,11 @@ export const UserBiddingUI = () => {
     } else {
       alert("Enter a Price above the Current Price and Starting price");
     }
+    // handleButttonclick end
   };
   return (
-    <div className="biddinUI flex p-[20px]  justify-center ">
+    <div className="biddinUI flex  p-[20px]  justify-center ">
+      <Backbutton />
       <img
         src={productList[value - 1].img}
         alt=""
@@ -66,7 +66,6 @@ export const UserBiddingUI = () => {
           value={value}
           inputRef={inputRef}
           handleButttonclick={handleButttonclick}
-          handleInputChange={handleInputChange}
         />
         <div className="m-h-[424px] w-[100%] mt-[20px] overflow-y-scroll hide-scrollbar ">
           <span className="font-bold">Live Auction</span>

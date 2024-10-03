@@ -9,7 +9,7 @@ export default function ViewDetailsButton({
   itemId,
 }: ViewDetailsButtonPropsType) {
   const navigate = useNavigate();
-  const { userList } = useBiddingContext();
+  const { usersList: userList } = useBiddingContext();
   return (
     <button
       className="bg-[#FC9905] w-[116px] h-[44px] px-[20px] rounded-[4px] text-white text-[16px] font-semibold items-center tracking-[-2%] leading-[24px] flex-nowrap active:scale-90"

@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { useBiddingContext } from "./ContextComponent";
 import UserProfile from "../RealComponents/UserProfile";
 
 export const UsersView = () => {
-  const navigate = useNavigate();
-  const { userList } = useBiddingContext();
+  const { usersList: userList } = useBiddingContext();
   return (
     <div className="flex  flex-col w-[100%] h-[100%] items-center justify-center">
       <span className="text-[50px] mb-[20px] text-center">

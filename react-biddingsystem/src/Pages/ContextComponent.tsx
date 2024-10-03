@@ -4,22 +4,21 @@ import { bidding_Products } from "../Data_store/Products";
 import {
   bidding_ProductsPropsType,
   ResultProdutsPropsType,
-  ResultUsersPropsType,
   UserPropsType,
 } from "../Types/types";
 import getProductsFromLocal from "../Common/getProductsFromLocal";
 import { getUserFromLocal } from "../Common/getUserFromLocal";
 
 export const MainComponentsContext = createContext<{
-  userList: UserPropsType;
-  productList: bidding_ProductsPropsType;
-  setThe_User_Products?: (
+  usersList: UserPropsType;
+  productsList: bidding_ProductsPropsType;
+  setUserProducts?: (
     value?: bidding_ProductsPropsType,
-    editedUsers?: ResultUsersPropsType
+    editedUsers?: UserPropsType
   ) => void;
 }>({
-  userList: [],
-  productList: [],
+  usersList: [],
+  productsList: [],
 });
 
 export const ContextComponent = ({
@@ -27,36 +26,31 @@ export const ContextComponent = ({
 }: {
   children: React.ReactNode;
 }) => {
-  let UserNames: UserPropsType =
-    localStorage.getItem("users") === null ? Users : getUserFromLocal();
-  let ProductsData: bidding_ProductsPropsType =
-    localStorage.getItem("Products") === null
-      ? bidding_Products
-      : getProductsFromLocal();
-  const [userList, setUserList] = useState<UserPropsType>(UserNames);
-  const [productList, setProductList] =
-    useState<bidding_ProductsPropsType>(ProductsData);
+  const [userList, setUserList] = useState<UserPropsType>(
+    getUserFromLocal() || Users
+  );
+  const [productList, setProductList] = useState<bidding_ProductsPropsType>(
+    getProductsFromLocal() || bidding_Products
+  );
   const setThe_User_Products = (
     editedProducts?: ResultProdutsPropsType,
-    editedUsers?: ResultUsersPropsType
+    editedUsers?: UserPropsType
   ) => {
-    ////////function to set updated product list and userList
+    ////////function to set updated productist and userList
     localStorage.clear();
-    editedProducts !== undefined
-      ? localStorage.setItem("Products", JSON.stringify(editedProducts))
-      : localStorage.setItem("Products", JSON.stringify(bidding_Products));
-    editedUsers !== undefined
-      ? localStorage.setItem("users", JSON.stringify(editedUsers))
-      : localStorage.setItem("users", JSON.stringify(Users));
+    editedProducts !== undefined &&
+      localStorage.setItem("Products", JSON.stringify(editedProducts));
+    editedUsers !== undefined &&
+      localStorage.setItem("users", JSON.stringify(editedUsers));
     setProductList(getProductsFromLocal());
     setUserList(getUserFromLocal());
   };
   return (
     <MainComponentsContext.Provider
       value={{
-        productList,
-        userList,
-        setThe_User_Products,
+        productsList: productList,
+        usersList: userList,
+        setUserProducts: setThe_User_Products,
       }}
     >
       {children}
@@ -64,4 +58,5 @@ export const ContextComponent = ({
   );
 };
 
-export const useBiddingContext = () => useContext(MainComponentsContext);
+export const useBiddingContext = () => useContext(MainComponentsContext)
+
