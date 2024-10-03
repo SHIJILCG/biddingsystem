@@ -22,12 +22,19 @@ export type biddingListProsType = {
   price: number;
 }[];
 
-export type UserPropsType = {
+export type UserPropsType = singleUserPropsTypeTwo[];
+export type singleUserPropsType = {
   user_id: number;
   name: string;
   User_img: string;
-}[];
-
+  messages:string[]
+} | {};
+export type singleUserPropsTypeTwo = {
+  user_id: number;
+  name: string;
+  User_img: string;
+  messages:string[]
+}
 export type ResultProdutsPropsType = {
   Item_id: number;
   Item_name: string;

@@ -4,7 +4,7 @@ type BiddinListPropsType = {
 };
 export default function BiddinList(data: BiddinListPropsType) {
   return (
-    <>
+    <div className="flex flex-col-reverse">
       {data.value.map((val) => (
         <div
           className=" py-[10px] flex justify-between border-b-2 border-b-[#0002]"
@@ -14,6 +14,6 @@ export default function BiddinList(data: BiddinListPropsType) {
           <span className="">${val.price}</span>
         </div>
       ))}
-    </>
+    </div>
   );
 }
