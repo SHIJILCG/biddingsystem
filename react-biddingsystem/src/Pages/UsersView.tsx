@@ -1,5 +1,5 @@
 import { useBiddingContext } from "./ContextComponent";
-import UserProfile from "../RealComponents/UserProfile";
+import UserProfile from "../Components/UserProfile";
 
 export const UsersView = () => {
   const { usersList: userList } = useBiddingContext();

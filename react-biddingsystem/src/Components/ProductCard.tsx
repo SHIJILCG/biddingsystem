@@ -1,11 +1,9 @@
-
 import { bidding_ProductPropsType } from "../Types/types";
 import ViewDetailsButton from "./ViewDetailsButton";
 type ProductCardPropsType = {
   item: bidding_ProductPropsType;
-  value: number;
 };
-export default function ProductCard({ item, value }: ProductCardPropsType) {
+export default function ProductCard({ item }: ProductCardPropsType) {
   return (
     <div
       className="Item-details max-w-[314px] flex flex-col  h-[288px] m-[10px] p-[10px] bg-white rounded-lg justify-between"
@@ -28,7 +26,7 @@ export default function ProductCard({ item, value }: ProductCardPropsType) {
             Current Bid
           </span>
         </span>
-        <ViewDetailsButton value={value} itemId={item.Item_id} />
+        <ViewDetailsButton itemId={item.Item_id} />
       </div>
     </div>
   );

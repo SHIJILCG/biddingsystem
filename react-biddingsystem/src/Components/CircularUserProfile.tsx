@@ -1,12 +1,10 @@
-import { UserPropsType } from "../Types/types";
+import { singleUserPropsTypeTwo, UserPropsType } from "../Types/types";
 type circularUserProfilePropsType = {
-  userList: UserPropsType;
-  value: number;
+  CurrentUser: singleUserPropsTypeTwo;
   toggleUserListView: () => void;
 };
 export default function CircularUserProfile({
-  userList,
-  value,
+  CurrentUser,
   toggleUserListView,
 }: circularUserProfilePropsType) {
   return (
@@ -15,11 +13,11 @@ export default function CircularUserProfile({
       onClick={toggleUserListView}
     >
       <img
-        src={userList[value - 1].User_img}
+        src={CurrentUser.User_img}
         alt=""
         className="h-[44px] w-[44px] rounded-[50%]"
       />
-      <span className="h-[30%] text-[20px]">{userList[value - 1].name}</span>
+      <span className="h-[30%] text-[20px]">{CurrentUser.name}</span>
     </div>
   );
 }

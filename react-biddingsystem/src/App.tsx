@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<UsersView />} />
         <Route path="UserHomePage" element={<UserHomeUI />} />
-        <Route path="UserBiddingPage" element={<UserBiddingUI />} />
+        <Route path="UserBiddingPage/:itemId" element={<UserBiddingUI />} />
       </Routes>
     </ContextComponent>
   );

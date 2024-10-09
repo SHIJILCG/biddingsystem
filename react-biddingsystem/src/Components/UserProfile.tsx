@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { singleUserPropsTypeTwo } from "../Types/types";
 import { useNavigate } from "react-router-dom";
+import { useBiddingContext } from "../Pages/ContextComponent";
 type UserProfileTypeProps = {
   user: singleUserPropsTypeTwo;
 };
 export default function UserProfile({ user }: UserProfileTypeProps) {
   const [toggleactiveclasss, settoggleactiveclasss] = useState("");
+  const {setLocalStorageItems} = useBiddingContext()
   const navigate = useNavigate();
   const handleUserLoginClick = (user: singleUserPropsTypeTwo) => {
     settoggleactiveclasss("active");
     setTimeout(() => {
       settoggleactiveclasss("");
     }, 100);
-    // <Link to={`UserHomePage/${user.user_id}`}></Link>
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    navigate("UserHomePage", { state: user.user_id });
+    setLocalStorageItems && setLocalStorageItems(undefined,undefined,user)
+    navigate("/UserHomePage"); 
   };
   return (
     <div
